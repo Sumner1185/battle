@@ -7,7 +7,7 @@ class Battle < Sinatra::Base
   # enable :sessions
 
   get '/' do
-    "Hello Battle!"
+    "Testing infrastructure working!"
   end
 
   # start the server if ruby file executed directly
