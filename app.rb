@@ -1,9 +1,7 @@
 require 'sinatra/base'
 
 class Battle < Sinatra::Base
-
-  # set :root, File.battle(__FILE__)
-
+  set :session_secret, 'super secret'
   enable :sessions
 
   get '/' do
@@ -12,9 +10,7 @@ class Battle < Sinatra::Base
 
   post '/names' do
     session[:player_1] = params[:Player_1]
-    #session.store(:player_1, @player_1)
     session[:player_2] = params[:Player_2]
-    #session.store(:player_2, @player_2)
     redirect '/play'
   end
 
