@@ -1,10 +1,7 @@
 feature 'start game' do
   
   scenario 'players enter names and can see them on screen' do
-    visit('/')
-    fill_in('Player_1', with: "Al")
-    fill_in('Player_2', with: "Nikita")
-    click_button('Submit')
+    sign_in_and_play
     expect(page).to have_content "Al", "Nikita"
   end
 
