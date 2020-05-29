@@ -20,6 +20,7 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
+    p $player_1_global.name
     @player_1 = $player_1_global.name
     @player_2 = $player_2_global.name
     #@starting_HP = '60HP'
@@ -28,8 +29,8 @@ class Battle < Sinatra::Base
 
   get '/attack' do
     # session[:attack] = true
-    @player_1 = session[:player_1]
-    @player_2 = session[:player_2]
+    @player_1 = $player_1_global.name
+    @player_2 = $player_2_global.name
     erb(:attack)
   end
 
