@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative './lib/player'
 
 class Battle < Sinatra::Base
   set :session_secret, 'super secret'
@@ -9,16 +10,19 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    session[:player_1] = params[:Player_1]
-    session[:player_2] = params[:Player_2]
+    #session[:player_1] = params[:Player_1]
+    #session[:player_2] = params[:Player_2]
     # session[:attack] = false
+    $player_1_global = Player.new(params[:Player_1])
+    $player_2_global = Player.new(params[:Player_2])
+    p $player_1_global.name
     redirect '/play'
   end
 
   get '/play' do
-    @player_1 = session[:player_1]
-    @player_2 = session[:player_2]
-    @starting_HP = '60HP'
+    @player_1 = $player_1_global.name
+    @player_2 = $player_2_global.name
+    #@starting_HP = '60HP'
     erb(:play)
   end
 
